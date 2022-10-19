@@ -18,11 +18,11 @@ public class HeapSort {
     public void sort(int arr[]) {
         int n = arr.length;
 
-        // Построение кучи
+        // Построение из массива двоичной кучи
         for (int i = n / 2 - 1; i >= 0; i--)
             heapify(arr, n, i);
 
-         // Перемещаем текущий корень
+         // Замена элемента с наибольшим значением на последний элемент
         for (int i = n - 1; i >= 0; i--) {
             int temp = arr[0];
             arr[0] = arr[i];
@@ -31,7 +31,7 @@ public class HeapSort {
         }
     }
 
-    // Преобразование в двоичную кучу поддерева с корневым узлом i, n - размер кучи
+    // Преобразование в двоичную кучу поддерева с родительским узлом i
     void heapify(int arr[], int n, int i) {
         int largest = i;
         int l = 2 * i + 1;
@@ -45,7 +45,7 @@ public class HeapSort {
         if (r < n && arr[r] > arr[largest])
             largest = r;
 
-        // Если самый большой элемент не корень
+        // Если самый большой элемент не родитель
         if (largest != i) {
             int swap = arr[i];
             arr[i] = arr[largest];
